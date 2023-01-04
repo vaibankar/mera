@@ -4,13 +4,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "my-instance" {
-  count         = var.instance_count
-  ami           = lookup(var.ami,var.aws_region)
-  instance_type = var.instance_type
-
-  tags = {
-    Name  = "Terraform-${count.index + 1}"
-    Batch = "PK"
-  }
+resource "aws_s3_bucket" "rugged_buckets" {
+  count         = length(var.s3_bucket_names) 
+  bucket        = var.s3_bucket_names[count.index]
+  force_destroy = true
 }

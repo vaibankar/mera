@@ -3,6 +3,7 @@ provider "aws" {
   profile = "merauser"
   region = "us-east-1"
 }
+
 resource "aws_instance" "my-instance" {
   count         = var.instance_count
   ami           = lookup(var.ami,var.aws_region)

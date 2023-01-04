@@ -1,14 +1,19 @@
-variable "s3_bucket_names" {
-  type = list
-  default = ["zupta.app", 
-             "zupta1.app", 
-             "zupta2.app",
-             "zupta3.app",
-             "zupta4.app",
-             "zupta5.app",
-             "zupta6.app",
-             "zupta7.app",
-             "zupta8.app",
-             "zupta9.app"
-            ]
+variable "ami" {
+  type = map
+
+  default = {
+    "us-east-1" = "ami-0a6b2839d44d781b2"
+  }
+}
+
+variable "instance_count" {
+  default = "5"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "aws_region" {
+  default = "us-east-1"
 }
